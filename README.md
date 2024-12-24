@@ -1,7 +1,10 @@
-# CS336 Spring 2024 Assignment 2: Systems
+# UHM ECE 496B Spring 2025 Assignment 4: HPC
 
-For a full description of the assignment, see the assignment handout at
-[cs336_spring2024_assignment2_systems.pdf](./cs336_spring2024_assignment2_systems.pdf)
+This asignment is created from Assignment 1 of [CS336 at Stanford taught in Spring 2024](https://stanford-cs336.github.io/spring2024/). 
+For the full description of the original assignment, see the assignment handout at
+[Ccs336_spring2024_assignment1_basics.pdf](./cs336_spring2024_assignment2_systems.pdf)
+
+Check out useful [lectures from CS336 at Stanford](https://github.com/stanford-cs336/spring2024-lectures).
 
 If you see any issues with the assignment handout or code, please feel free to
 raise a GitHub issue or open a pull request with a fix.
@@ -60,3 +63,15 @@ To submit, run `./test_and_make_submission.sh` . This script will install your
 code's dependencies, run tests, and create a gzipped tarball with the output. We
 should be able to unzip your submitted tarball and run
 `./test_and_make_submission.sh` to verify your test results.
+
+
+## ECE491B Assignment instructions
+
+Follow along the [CS336@Stanford handout](./cs336_spring2024_assignment2_systems.pdf) with small deviations:
+1. What the code looks like: clone https://github.com/igormolybog/s2025-assignment4-hpc
+2. How to submit: You will submit the report on the assignment to [Assignment Submission Form](https://forms.gle/CSRweWjuBxvYbb9MA). The code does not have to be attached as long as you include links to the main GitHub branch where your code lives and links to all of the Colab notebooks if applicable.
+3. Section 2 and related work can be performed in Colab. Section 3 has to be performed using [Koa cluster](https://docs.google.com/document/d/1h00x2pAjIjMDJ-1RBeHQaTvnfxUhM_lAVNbskEc9f7A/edit?usp=sharing).
+4. In case the large models (XL and 2.7B) result in out of memory errors (OOM), feel free to do profiling experiments with smaller models.
+5. Skip Sections 3.2, 3.4.3, and 4 and associated Problems
+6. What you can use: Implementation from scratch is preferred, but experiments are essential. If you are stuck with some implementation, just use the Huggingface/Pytorch implementation and proceed to the experiments.
+    - Submit the report reflecting your attempts at implementation for partial credit

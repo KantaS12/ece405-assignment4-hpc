@@ -7,7 +7,8 @@ For the full description of the original assignment, see the assignment handout 
 Check out useful [lectures from CS336 at Stanford](https://github.com/stanford-cs336/spring2024-lectures).
 
 If you see any issues with the assignment handout or code, please feel free to
-raise a GitHub issue or open a pull request with a fix.
+raise a GitHub issue or open a pull request with a fix. Any improvements of the existing codebase
+(including adaptations from Stanford to UHM workflows, modifications of PDF, etc) will be rewarded with extra points.
 
 ## Setup
 

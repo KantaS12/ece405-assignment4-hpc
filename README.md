@@ -4,7 +4,7 @@ This asignment is created from Assignment 2 of [CS336 at Stanford taught in Spri
 For the full description of the original assignment, see the assignment handout at
 [cs336_spring2024_assignment2_systems.pdf](./cs336_spring2024_assignment2_systems.pdf)
 
-Check out useful [lectures from CS336 at Stanford](https://github.com/stanford-cs336/spring2024-lectures).
+Check out useful [lectures from CS336 at Stanford](https://github.com/stanford-cs336/spring2024-lectures), especially [Lecture 8](https://github.com/stanford-cs336/spring2024-lectures/blob/main/lecture_08.py).
 
 If you see any issues with the assignment handout or code, please feel free to
 raise a GitHub issue or open a pull request with a fix. Any improvements of the existing codebase

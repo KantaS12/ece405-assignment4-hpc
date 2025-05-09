@@ -73,6 +73,6 @@ Follow along the [CS336@Stanford handout](./cs336_spring2024_assignment2_systems
 2. How to submit: You will submit the report on the assignment to [Assignment Submission Form](https://forms.gle/CSRweWjuBxvYbb9MA). The code does not have to be attached as long as you include links to the main GitHub branch where your code lives and links to all of the Colab notebooks if applicable.
 3. Section 2 and related work can be performed in Colab pr locally. Section 3 has to be performed using [Koa cluster](https://docs.google.com/document/d/1h00x2pAjIjMDJ-1RBeHQaTvnfxUhM_lAVNbskEc9f7A/edit?usp=sharing).
 4. In case the large models (XL and 2.7B) result in out of memory errors (OOM), feel free to do profiling experiments with smaller models.
-5. Skip Sections 3.2, 3.4.3, and 4 and associated Problems
+5. Koa cluster does not support multi-node communication. Skip Sections 3.2, 3.4.3, and 4 and associated Problems. In the rest of the problems, multi-node communication should be replaced with a single-node multi-GPU setup.
 6. What you can use: Implementation from scratch is preferred, but experiments are essential. If you are stuck with some implementation, just use the Huggingface/Pytorch implementation and proceed to the experiments.
     - Submit the report reflecting your attempts at implementation for partial credit

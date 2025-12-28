@@ -1,17 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "Creating virtual environment to run tests"
-python3 -m venv ./336_a2_test_venv
-source ./336_a2_test_venv/bin/activate
-echo "Installing requirements"
-pip install --upgrade pip
-pip install -e ./cs336-basics/ -e ./cs336-systems/'[test]'
-echo "Running tests"
-pytest -v ./cs336-systems/tests --junitxml=test_results.xml || true
+uv run pytest -v ./tests --junitxml=test_results.xml || true
 echo "Done running tests"
-echo "Cleaning up virtual environment for tests"
-deactivate
 
 # Set the name of the output tar.gz file
 output_file="cs336-spring2024-assignment-2-submission.zip"
@@ -21,7 +12,6 @@ rm "$output_file" || true
 zip -r "$output_file" . \
     -x '*egg-info*' \
     -x '*mypy_cache*' \
-    -x '*336_a2_test_venv*' \
     -x '*pytest_cache*' \
     -x '*build*' \
     -x '*ipynb_checkpoints*' \
@@ -33,6 +23,10 @@ zip -r "$output_file" . \
     -x '*.json' \
     -x '*.out' \
     -x '*.err' \
-    -x '.git*'
+    -x '.git*' \
+    -x '.venv/*' \
+    -x '*.bin' \
+    -x '*.pt' \
+    -x '*.pth'
 
 echo "All files have been compressed into $output_file"

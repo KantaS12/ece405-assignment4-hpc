@@ -1,11 +1,30 @@
-#!/usr/bin/env python3
 from __future__ import annotations
 
 import math
 from collections.abc import Callable, Iterable
-from typing import Optional
 
 import torch
+
+
+def get_cosine_lr(
+    it: int,
+    max_learning_rate: float,
+    min_learning_rate: float,
+    warmup_iters: int,
+    cosine_cycle_iters: int,
+):
+    """Cosine with warmup learning rate scheduler."""
+    # First, we linearly warmup for warmup_iters steps.
+    if it < warmup_iters:
+        return max_learning_rate * it / warmup_iters
+    # Then, if it > cosine_cycle_iters, we return min learning rate.
+    if it > cosine_cycle_iters:
+        return min_learning_rate
+    # Else, we use cosine decay down to min learning rate.
+    decay_ratio = (it - warmup_iters) / (cosine_cycle_iters - warmup_iters)
+    assert 0 <= decay_ratio <= 1
+    coeff = 0.5 * (1.0 + math.cos(math.pi * decay_ratio))
+    return min_learning_rate + coeff * (max_learning_rate - min_learning_rate)
 
 
 class AdamW(torch.optim.Optimizer):
@@ -18,17 +37,17 @@ class AdamW(torch.optim.Optimizer):
         weight_decay: float = 0.01,
     ):
         if not 0.0 <= lr:
-            raise ValueError("Invalid learning rate: {}".format(lr))
+            raise ValueError(f"Invalid learning rate: {lr}")
         if not 0.0 <= eps:
-            raise ValueError("Invalid epsilon value: {}".format(eps))
+            raise ValueError(f"Invalid epsilon value: {eps}")
         if not 0.0 <= betas[0] < 1.0:
-            raise ValueError("Invalid beta parameter at index 0: {}".format(betas[0]))
+            raise ValueError(f"Invalid beta parameter at index 0: {betas[0]}")
         if not 0.0 <= betas[1] < 1.0:
-            raise ValueError("Invalid beta parameter at index 1: {}".format(betas[1]))
+            raise ValueError(f"Invalid beta parameter at index 1: {betas[1]}")
         defaults = dict(lr=lr, betas=betas, eps=eps, weight_decay=weight_decay)
-        super(AdamW, self).__init__(params, defaults)
+        super().__init__(params, defaults)
 
-    def step(self, closure: Optional[Callable] = None):
+    def step(self, closure: Callable | None = None):
         loss = None
         if closure is not None:
             loss = closure()

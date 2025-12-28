@@ -69,7 +69,7 @@ should be able to unzip your submitted tarball and run
 `./test_and_make_submission.sh` to verify your test results.
 
 
-## ECE491B Assignment instructions
+## ECE405 Assignment instructions
 
 Follow along the [CS336@Stanford handout](./cs336_spring2025_assignment2_systems.pdf) with small deviations:
 1. What the code looks like: clone https://github.com/igormolybog/s2025-assignment4-hpc

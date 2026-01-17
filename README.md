@@ -3,6 +3,7 @@
 This asignment is created from Assignment 2 of [CS336 at Stanford taught in Spring 2025](https://stanford-cs336.github.io/spring2025/). 
 For the full description of the original assignment, see the assignment handout at
 [cs336_spring2025_assignment2_systems.pdf](./cs336_spring2025_assignment2_systems.pdf)
+Check out the [glossary of terms](./glossary.md) for this assignment.
 
 Check out useful [lectures from CS336 at Stanford](https://github.com/stanford-cs336/spring2025-lectures), especially [Lecture 8](https://github.com/stanford-cs336/spring2025-lectures/blob/main/lecture_08.py).
 

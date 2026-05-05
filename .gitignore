@@ -139,6 +139,11 @@ scripts/
 # LaTeX writeup sources / build artifacts
 latex/
 
+# nsys profiling artifacts (large; sometimes contain machine-local paths)
+*.sqlite
+*.nsys-rep
+*.qdrep
+
 # Spyder project settings
 .spyderproject
 .spyproject

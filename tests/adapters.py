@@ -15,8 +15,10 @@ def get_flashattention_autograd_function_pytorch() -> Type:
     Returns:
         A class object (not an instance of the class)
     """
-    # For example: return MyFlashAttnAutogradFunctionClass
-    raise NotImplementedError
+    import sys, pathlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "cs336-systems"))
+    from flash_attention import FlashAttentionPytorch
+    return FlashAttentionPytorch
 
 
 def get_flashattention_autograd_function_triton() -> Type:
@@ -35,89 +37,32 @@ def get_flashattention_autograd_function_triton() -> Type:
     raise NotImplementedError
 
 
+def _ddp_module():
+    import sys, pathlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "cs336-systems"))
+    import ddp as ddp_mod
+    return ddp_mod
+
+
 def get_ddp_individual_parameters(module: torch.nn.Module) -> torch.nn.Module:
-    """
-    Returns a torch.nn.Module container that handles
-    parameter broadcasting and gradient synchronization for
-    distributed data parallel training.
-
-    This container should overlaps communication with backprop computation
-    by asynchronously communicating gradients as they are ready
-    in the backward pass. The gradient for each parameter tensor
-    is individually communicated.
-
-    Args:
-        module: torch.nn.Module
-            Underlying model to wrap with DDP.
-    Returns:
-        Instance of a DDP class.
-    """
-    # For example: return DDPIndividualParameters(module)
-    raise NotImplementedError
+    return _ddp_module().DDPIndividualParameters(module)
 
 
 def ddp_individual_parameters_on_after_backward(ddp_model: torch.nn.Module, optimizer: torch.optim.Optimizer):
-    """
-    Code to run after the backward pass is completed, but before we take
-    an optimizer step.
-
-    Args:
-        ddp_model: torch.nn.Module
-            DDP-wrapped model.
-        optimizer: torch.optim.Optimizer
-            Optimizer being used with the DDP-wrapped model.
-    """
-    # For example: ddp_model.finish_gradient_synchronization()
-    raise NotImplementedError
+    ddp_model.finish_gradient_synchronization()
 
 
 def get_ddp_bucketed(module: torch.nn.Module, bucket_size_mb: float) -> torch.nn.Module:
-    """
-    Returns a torch.nn.Module container that handles
-    parameter broadcasting and gradient synchronization for
-    distributed data parallel training.
-
-    This container should overlaps communication with backprop computation
-    by asynchronously communicating buckets of gradients as they are ready
-    in the backward pass.
-
-    Args:
-        module: torch.nn.Module
-            Underlying model to wrap with DDP.
-        bucket_size_mb: The bucket size, in megabytes. If None, use a single
-            bucket of unbounded size.
-    Returns:
-        Instance of a DDP class.
-    """
-    raise NotImplementedError
+    return _ddp_module().DDPBucketed(module, bucket_size_mb=bucket_size_mb)
 
 
 def ddp_bucketed_on_after_backward(ddp_model: torch.nn.Module, optimizer: torch.optim.Optimizer):
-    """
-    Code to run after the backward pass is completed, but before we take
-    an optimizer step.
-
-    Args:
-        ddp_model: torch.nn.Module
-            DDP-wrapped model.
-        optimizer: torch.optim.Optimizer
-            Optimizer being used with the DDP-wrapped model.
-    """
-    # For example: ddp_model.finish_gradient_synchronization()
-    raise NotImplementedError
+    ddp_model.finish_gradient_synchronization()
 
 
 def ddp_bucketed_on_train_batch_start(ddp_model: torch.nn.Module, optimizer: torch.optim.Optimizer):
-    """
-    Code to run at the very start of the training step.
-
-    Args:
-        ddp_model: torch.nn.Module
-            DDP-wrapped model.
-        optimizer: torch.optim.Optimizer
-            Optimizer being used with the DDP-wrapped model.
-    """
-    raise NotImplementedError
+    # No per-step preamble is required by our DDPBucketed implementation.
+    return None
 
 
 def get_sharded_optimizer(params, optimizer_cls: Type[torch.optim.Optimizer], **kwargs) -> torch.optim.Optimizer:

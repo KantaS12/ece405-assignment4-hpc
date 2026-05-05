@@ -1,0 +1,11 @@
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+Traceback (most recent call last):
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 13, in <module>
+    from implementation import annotated_scaled_dot_product_attention
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/implementation.py", line 135, in <module>
+    class ToyModel(nn.Module):
+                   ^^
+NameError: name 'nn' is not defined

@@ -1,0 +1,25 @@
+naive_ddp verify: OK
+variant=individual size=small ws=2 backend=gloo bs=4 ctx=128 iter_ms=23717.23 comm_ms=1104.55 comm_frac=0.047
+variant=flat size=small ws=2 backend=gloo bs=4 ctx=128 iter_ms=24528.74 comm_ms=1788.16 comm_frac=0.073
+variant=overlap size=small ws=2 backend=gloo bs=4 ctx=128 iter_ms=23270.80 comm_ms=78.59 comm_frac=0.003
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=1.0 iter_ms=24103.70 comm_ms=67.74 comm_frac=0.003
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=10.0 iter_ms=24472.26 comm_ms=484.64 comm_frac=0.020
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=100.0 iter_ms=24665.11 comm_ms=720.77 comm_frac=0.029
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=1000.0 iter_ms=24411.07 comm_ms=884.10 comm_frac=0.036
+
+=== log: reports/ddp/train-12659138-20260505-170116.log ===
+naive_ddp verify: OK
+variant=individual size=small ws=2 backend=gloo bs=4 ctx=128 iter_ms=23717.23 comm_ms=1104.55 comm_frac=0.047
+variant=individual size=small ws=2 backend=gloo bs=4 ctx=128 iter_ms=23717.23 comm_ms=1104.55 comm_frac=0.047
+variant=flat size=small ws=2 backend=gloo bs=4 ctx=128 iter_ms=24528.74 comm_ms=1788.16 comm_frac=0.073
+variant=flat size=small ws=2 backend=gloo bs=4 ctx=128 iter_ms=24528.74 comm_ms=1788.16 comm_frac=0.073
+variant=overlap size=small ws=2 backend=gloo bs=4 ctx=128 iter_ms=23270.80 comm_ms=78.59 comm_frac=0.003
+variant=overlap size=small ws=2 backend=gloo bs=4 ctx=128 iter_ms=23270.80 comm_ms=78.59 comm_frac=0.003
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=1.0 iter_ms=24103.70 comm_ms=67.74 comm_frac=0.003
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=1.0 iter_ms=24103.70 comm_ms=67.74 comm_frac=0.003
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=10.0 iter_ms=24472.26 comm_ms=484.64 comm_frac=0.020
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=10.0 iter_ms=24472.26 comm_ms=484.64 comm_frac=0.020
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=100.0 iter_ms=24665.11 comm_ms=720.77 comm_frac=0.029
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=100.0 iter_ms=24665.11 comm_ms=720.77 comm_frac=0.029
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=1000.0 iter_ms=24411.07 comm_ms=884.10 comm_frac=0.036
+variant=bucketed size=small ws=2 backend=gloo bs=4 ctx=128 bucket_mb=1000.0 iter_ms=24411.07 comm_ms=884.10 comm_frac=0.036

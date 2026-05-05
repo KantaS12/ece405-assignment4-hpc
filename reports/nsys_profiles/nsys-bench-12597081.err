@@ -1,0 +1,55 @@
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+Traceback (most recent call last):
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 133, in <module>
+    main()
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 115, in main
+    run()
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 92, in run_forward_backward
+    logits = model(inputs)
+             ^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-basics/cs336_basics/model.py", line 247, in forward
+    x = layer(x)
+        ^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-basics/cs336_basics/model.py", line 380, in forward
+    x_attn = self.attn(self.ln1(x))
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-basics/cs336_basics/model.py", line 516, in forward
+    attn_output = scaled_dot_product_attention(K=K, Q=Q, V=V, mask=causal_mask)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/apps/software/lang/Anaconda3/2024.02-1/lib/python3.11/contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/implementation.py", line 43, in annotated_scaled_dot_product_attention
+    attention_scores = einsum(Q, K, "... query d_k, ... key d_k -> ... query key") / math.sqrt(d_k)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/einops/einops.py", line 916, in einsum
+    return get_backend(tensors[0]).einsum(pattern, *tensors)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/einops/_backends.py", line 288, in einsum
+    return self.torch.einsum(pattern, *x)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/functional.py", line 407, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 128.00 MiB. GPU 0 has a total capacity of 23.60 GiB of which 89.44 MiB is free. Including non-PyTorch memory, this process has 23.50 GiB memory in use. Of the allocated memory 22.99 GiB is allocated by PyTorch, and 224.54 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

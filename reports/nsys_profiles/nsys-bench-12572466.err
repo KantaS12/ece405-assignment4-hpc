@@ -1,0 +1,19 @@
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+Traceback (most recent call last):
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 133, in <module>
+    main()
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 115, in main
+    run()
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 95, in run_forward_backward
+    loss.backward()
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/_tensor.py", line 626, in backward
+    torch.autograd.backward(
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/autograd/__init__.py", line 347, in backward
+    _engine_run_backward(
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/autograd/graph.py", line 823, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 23.60 GiB of which 77.44 MiB is free. Including non-PyTorch memory, this process has 23.52 GiB memory in use. Of the allocated memory 23.04 GiB is allocated by PyTorch, and 176.51 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

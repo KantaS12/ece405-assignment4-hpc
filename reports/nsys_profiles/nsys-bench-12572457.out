@@ -1,0 +1,4 @@
+forward_backward | layers=24 d_model=1024 heads=16 d_ff=4096 ctx=1024 batch=4 device=cuda
+Processing events...
+Generated:
+	No reports were generated

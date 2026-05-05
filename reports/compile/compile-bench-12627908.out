@@ -1,0 +1,4 @@
+=== (a) attention compile sweep ===
+batch=8 iters=100 warmup=5 device=cuda modes=['eager', 'compiled']
+     mode  dim    seq     fwd ms    bwd ms    mem MiB   peak MiB  status
+    eager   16    256      0.245     0.503       21.1       29.2  ok

@@ -1,0 +1,37 @@
+[rank0]:[W505 16:01:12.628431262 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank1]:[W505 16:01:12.653620507 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0505 16:01:12.853000 420776 torch/multiprocessing/spawn.py:169] Terminating process 420786 via signal SIGTERM
+Traceback (most recent call last):
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/train_ddp.py", line 194, in <module>
+    main()
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/train_ddp.py", line 190, in main
+    mp.spawn(_worker, args=(args.world_size, args, args.out), nprocs=args.world_size, join=True)
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 340, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 296, in start_processes
+    while not context.join():
+              ^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 215, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 90, in _wrap
+    fn(i, *args)
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/train_ddp.py", line 109, in _worker
+    _broadcast_initial_weights(raw_model)
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/train_ddp.py", line 100, in _broadcast_initial_weights
+    dist.broadcast(p.data, src=0)
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py", line 2726, in broadcast
+    work = group.broadcast([tensor], opts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.distributed.DistBackendError: NCCL error in: /pytorch/torch/csrc/distributed/c10d/NCCLUtils.hpp:268, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.21.5
+ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+Last error:
+Duplicate GPU detected : rank 0 and rank 1 both on CUDA device b1000
+

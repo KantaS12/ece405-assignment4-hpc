@@ -1,0 +1,2 @@
+submit: SIZE=2.7B CTX=128 MODE=forward AMP=fp32
+sbatch: error: Unable to open file scripts/profile_memory.sbatch

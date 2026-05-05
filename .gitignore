@@ -126,11 +126,18 @@ celerybeat.pid
 # Environments
 .env
 .venv
+.venv/
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Local sbatch / sweep scripts
+scripts/
+
+# LaTeX writeup sources / build artifacts
+latex/
 
 # Spyder project settings
 .spyderproject

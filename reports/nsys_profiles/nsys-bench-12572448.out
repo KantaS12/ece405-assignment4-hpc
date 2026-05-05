@@ -1,0 +1,131 @@
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-be32.qdstrm'
+[1/1] [0%                          ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-repProcessing events...
+[1/1] [0%                          ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [==20%                       ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [===23%                      ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [====26%                     ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [====27%                     ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [=====30%                    ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [=====31%                    ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [======34%                   ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [=======38%                  ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [========41%                 ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [========42%                 ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [=========44%                ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [============56%             ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [=================73%        ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [===================82%      ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [====================83%     ] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [========================100%] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep[1/1] [========================100%] bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep
+forward | layers=32 d_model=2560 heads=32 d_ff=10240 ctx=512 batch=4 device=cuda
+Generated:
+	/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep
+
+=== nsys report: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep ===
+Generating SQLite file reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite from reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.nsys-rep
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/nvtx_sum.py]... 
+
+ ** NVTX Range Summary (nvtx_sum):
+
+ Time (%)  Total Time (ns)  Instances   Avg (ns)     Med (ns)    Min (ns)   Max (ns)   StdDev (ns)   Style               Range            
+ --------  ---------------  ---------  -----------  -----------  ---------  ---------  -----------  -------  -----------------------------
+     45.3       7544325194         10  754432519.4  755537036.5  745353750  756797301    3337448.4  PushPop  :forward                     
+      4.9        818585266        320    2558079.0     379786.5     329760    5852638    2643284.5  PushPop  :scaled dot product attention
+      4.6        757424462          1  757424462.0  757424462.0  757424462  757424462          0.0  PushPop  :step 4                      
+      4.5        756462221          1  756462221.0  756462221.0  756462221  756462221          0.0  PushPop  :step 9                      
+      4.5        756408280          1  756408280.0  756408280.0  756408280  756408280          0.0  PushPop  :step 8                      
+      4.5        756010901          1  756010901.0  756010901.0  756010901  756010901          0.0  PushPop  :step 6                      
+      4.5        755684526          1  755684526.0  755684526.0  755684526  755684526          0.0  PushPop  :step 7                      
+      4.5        755613349          1  755613349.0  755613349.0  755613349  755613349          0.0  PushPop  :step 5                      
+      4.5        754510548          1  754510548.0  754510548.0  754510548  754510548          0.0  PushPop  :step 3                      
+      4.5        754484568          1  754484568.0  754484568.0  754484568  754484568          0.0  PushPop  :step 1                      
+      4.5        753864764          1  753864764.0  753864764.0  753864764  753864764          0.0  PushPop  :step 2                      
+      4.5        745425498          1  745425498.0  745425498.0  745425498  745425498          0.0  PushPop  :step 0                      
+      3.7        609280326        320    1904001.0     106298.5      86016    4601633    2183705.0  PushPop  :computing sotmax            
+      0.5         90650233        320     283282.0     111478.0      93709     558878     214273.8  PushPop  :computing attention scores: 
+      0.2         36133162        320     112916.1     100268.0      85869     241374      27143.7  PushPop  :final matmul                
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/osrt_sum.py]... 
+
+ ** OS Runtime Summary (osrt_sum):
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)    Med (ns)   Min (ns)  Max (ns)   StdDev (ns)         Name        
+ --------  ---------------  ---------  ----------  ----------  --------  ---------  -----------  -------------------
+    100.0      48272590326       1753  27537130.8  10069168.0  10030710  100441993   35620891.2  poll               
+      0.0           217369          4     54342.3     54909.0     51146      56405       2305.8  ioctl              
+      0.0            61760          8      7720.0      6917.0      5297      13573       2609.4  pthread_cond_signal
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/cuda_api_sum.py]... 
+
+ ** CUDA API Summary (cuda_api_sum):
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)     Med (ns)    Min (ns)   Max (ns)   StdDev (ns)          Name         
+ --------  ---------------  ---------  -----------  -----------  ---------  ---------  -----------  ---------------------
+     58.5       9590930698         10  959093069.8  959014880.5  956355203  961958909    2034869.5  cudaDeviceSynchronize
+     41.5       6805384535      18320     371473.0       5945.0       3301   12131500    1734179.8  cudaLaunchKernel     
+      0.0             3807          1       3807.0       3807.0       3807       3807          0.0  cuProfilerStart      
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/cuda_gpu_kern_sum.py]... 
+
+ ** CUDA GPU Kernel Summary (cuda_gpu_kern_sum):
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)   Med (ns)   Min (ns)  Max (ns)  StdDev (ns)                                                  Name                                                
+ --------  ---------------  ---------  ---------  ---------  --------  --------  -----------  ----------------------------------------------------------------------------------------------------
+     88.0      15055273939       2250  6691232.9  3023506.5   2804144  12458597    4250153.3  ampere_sgemm_128x64_tn                                                                              
+      1.9        321058744        320  1003308.6  1002566.0    940710   1050822       7397.6  ampere_sgemm_128x128_nn                                                                             
+      1.7        288894763       3860    74843.2    83521.0     53601     88417      12716.4  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      1.2        207393003        320   648103.1   647940.0    605507    680548       5521.9  ampere_sgemm_128x128_tn                                                                             
+      1.1        195911771        640   306112.1   305794.0    298753    315650       6004.5  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BinaryFunctor<float, float, floa…
+      0.8        130028022        320   406337.6   406051.0    391522    419106       1921.3  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.7        126975424       1920    66133.0    66433.0     61216     69345       1879.4  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.7        120480739        320   376502.3   376290.0    359746    389795       2056.7  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.7        112554182        320   351731.8   351682.0    345218    357378        942.8  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.6        102894823        320   321546.3   321506.0    320194    323586        527.0  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BUnaryFunctor<float, float, floa…
+      0.6        101646995        320   317646.9   317585.5    316674    319554        485.0  void at::native::vectorized_elementwise_kernel<(int)4, at::native::exp_kernel_cuda(at::TensorIterat…
+      0.5         91072907       1920    47433.8    36672.0     35936     71424      15467.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<float>, std::arr…
+      0.4         68226260        320   213207.1   213122.0    204865    220929       1200.6  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::MaxOps<flo…
+      0.4         61398678        320   191870.9   192033.0    190274    194113        846.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::sigmoid_kernel_cuda(at::TensorIt…
+      0.3         55767855        320   174274.5   174209.0    171777    177985       1087.3  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::func_wrapp…
+      0.2         31625945        650    48655.3    48640.0     48128     50304        258.8  void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scala…
+      0.1         22532967        650    34666.1    34656.0     33121     36064        378.5  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::MeanOps<fl…
+      0.0          6561740        650    10095.0     8928.0      7584     93121      10131.0  void at::native::index_elementwise_kernel<(int)128, (int)4, void at::native::gpu_index_kernel<void …
+      0.0          1566919        320     4896.6     4896.0      4576      5120         65.0  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::n…
+      0.0          1486248        650     2286.5     2240.0      2080      2592         99.7  void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctorOnSelf_add<float>, st…
+      0.0          1418665        640     2216.7     2176.0      2080      2528         69.1  void <unnamed>::elementwise_kernel_with_index<int, at::native::arange_cuda_out(const c10::Scalar &,…
+      0.0          1391466        650     2140.7     2144.0      1888      2336         74.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::rsqrt_kernel_cuda(at::TensorIter…
+      0.0           722821        320     2258.8     2320.0      2016      2688        194.4  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<float>, std::array<c…
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/cuda_gpu_mem_time_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain GPU memory data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/cuda_gpu_mem_size_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain GPU memory data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/openmp_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain OpenMP event data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/opengl_khr_range_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain KHR Extension (KHR_DEBUG) data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/opengl_khr_gpu_range_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/vulkan_marker_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/vulkan_gpu_marker_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/dx11_pix_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain DX11 CPU debug markers.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/dx12_gpu_marker_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain DX12 GPU debug markers.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/dx12_pix_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain DX12 CPU debug markers.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/wddm_queue_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain WDDM context data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/um_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain CUDA memory transfers data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/um_total_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain CUDA memory transfers data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/um_cpu_page_faults_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain CUDA Unified Memory CPU page faults data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/openacc_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain OpenACC event data.
+
+Processing [reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite] with [/opt/apps/software/system/CUDA/12.9.1/nsight-systems-2025.1.3/host-linux-x64/reports/syscall_sum.py]... 
+SKIPPED: reports/bench-2.7B-ctx512-forward-12572448-20260501-013857.sqlite does not contain syscall data.
+

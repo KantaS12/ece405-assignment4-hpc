@@ -1,0 +1,39 @@
+Process SpawnProcess-8:
+Process SpawnProcess-7:
+Traceback (most recent call last):
+  File "/opt/apps/software/lang/Anaconda3/2024.02-1/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/apps/software/lang/Anaconda3/2024.02-1/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark_allreduce.py", line 48, in _worker
+    dist.all_reduce(x, async_op=False)
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py", line 2806, in all_reduce
+    work = group.allreduce([tensor], opts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+torch.distributed.DistBackendError: NCCL error in: /pytorch/torch/csrc/distributed/c10d/NCCLUtils.hpp:268, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.21.5
+ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+Last error:
+Duplicate GPU detected : rank 0 and rank 1 both on CUDA device 98000
+  File "/opt/apps/software/lang/Anaconda3/2024.02-1/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/apps/software/lang/Anaconda3/2024.02-1/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark_allreduce.py", line 48, in _worker
+    dist.all_reduce(x, async_op=False)
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py", line 2806, in all_reduce
+    work = group.allreduce([tensor], opts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.distributed.DistBackendError: NCCL error in: /pytorch/torch/csrc/distributed/c10d/NCCLUtils.hpp:268, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.21.5
+ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+Last error:
+Duplicate GPU detected : rank 1 and rank 0 both on CUDA device 98000
+[rank0]:[W505 15:31:06.476970597 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank1]:[W505 15:31:06.479564865 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[2026-05-05T16:03:18.556] error: *** JOB 12649082 ON gn-08-13-00 CANCELLED AT 2026-05-05T16:03:18 DUE to SIGNAL Terminated ***

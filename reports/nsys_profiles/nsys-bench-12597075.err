@@ -1,0 +1,18 @@
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+Traceback (most recent call last):
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 133, in <module>
+    main()
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 115, in main
+    run()
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-systems/benchmark.py", line 97, in run_forward_backward
+    optimizer.step()
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/optim/optimizer.py", line 493, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/cs336-basics/cs336_basics/optimizer.py", line 75, in step
+    v_t = beta_2 * prev_v_t + ((1 - beta_2) * torch.square(grad))
+                               ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 40.00 MiB. GPU 0 has a total capacity of 23.60 GiB of which 19.44 MiB is free. Including non-PyTorch memory, this process has 23.57 GiB memory in use. Of the allocated memory 21.94 GiB is allocated by PyTorch, and 1.33 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

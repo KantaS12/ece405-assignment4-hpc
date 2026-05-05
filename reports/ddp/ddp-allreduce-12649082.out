@@ -1,0 +1,11 @@
+[run] backend=gloo world_size=2 sizes=['1MB', '10MB', '100MB', '1GB']
+  gloo  ws=2   1MB  0.413 ms/call
+  gloo  ws=2  10MB  2.788 ms/call
+  gloo  ws=2 100MB  32.558 ms/call
+  gloo  ws=2   1GB  326.102 ms/call
+[run] backend=gloo world_size=4 sizes=['1MB', '10MB', '100MB', '1GB']
+  gloo  ws=4   1MB  0.662 ms/call
+  gloo  ws=4  10MB  4.712 ms/call
+  gloo  ws=4 100MB  48.658 ms/call
+  gloo  ws=4   1GB  492.285 ms/call
+[run] backend=nccl world_size=2 sizes=['1MB', '10MB', '100MB', '1GB']

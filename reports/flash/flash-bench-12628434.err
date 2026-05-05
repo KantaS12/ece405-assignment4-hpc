@@ -1,0 +1,5 @@
+[skip] FlashAttentionTriton: No module named 'flash_attention_triton'
+/mnt/lustre/koa/scratch/kantas/ece405-assignment4-hpc/.venv/lib/python3.11/site-packages/torch/_inductor/compile_fx.py:194: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.
+  warnings.warn(
+W0504 02:03:10.196000 350458 torch/_inductor/utils.py:1137] [0/0] Not enough SMs to use max_autotune_gemm mode
+[2026-05-04T04:04:34.016] error: *** JOB 12628434 ON gn-08-13-00 CANCELLED AT 2026-05-04T04:04:34 DUE TO TIME LIMIT ***

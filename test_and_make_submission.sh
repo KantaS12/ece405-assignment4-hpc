@@ -4,12 +4,19 @@ set -euo pipefail
 uv run pytest -v ./tests --junitxml=test_results.xml || true
 echo "Done running tests"
 
-# Set the name of the output tar.gz file
 output_file="cs336-spring2024-assignment-2-submission.zip"
-rm "$output_file" || true
+rm -f "$output_file"
 
-# Compress all files in the current directory into a single zip file
-zip -r "$output_file" . \
+zip -r "$output_file" \
+    cs336-systems \
+    cs336_systems \
+    tests \
+    reports \
+    pyproject.toml \
+    uv.lock \
+    README.md \
+    glossary.md \
+    test_results.xml \
     -x '*egg-info*' \
     -x '*mypy_cache*' \
     -x '*pytest_cache*' \
@@ -18,15 +25,18 @@ zip -r "$output_file" . \
     -x '*__pycache__*' \
     -x '*.pkl' \
     -x '*.pickle' \
-    -x '*.txt' \
     -x '*.log' \
-    -x '*.json' \
     -x '*.out' \
     -x '*.err' \
-    -x '.git*' \
-    -x '.venv/*' \
+    -x '*.sqlite' \
+    -x '*.nsys-rep' \
+    -x '*.qdrep' \
     -x '*.bin' \
     -x '*.pt' \
-    -x '*.pth'
+    -x '*.pth' \
+    -x 'reports/nsys_profiles/*'
+
+zip -j "$output_file" latex/report.pdf
 
 echo "All files have been compressed into $output_file"
+ls -lh "$output_file"

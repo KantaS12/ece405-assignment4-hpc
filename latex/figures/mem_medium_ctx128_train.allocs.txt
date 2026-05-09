@@ -1,0 +1,54 @@
+# Top 8 live allocations at the global peak
+# snapshot=reports/memory/snap-medium-ctx128-forward_backward-fp32-pystk-20260506-080242.pickle
+# peak=6688.4 MiB  total_live_at_peak=6688.4 MiB
+
+[1] 39.06 MiB (40960000 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+
+[2] 39.06 MiB (40960000 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+
+[3] 39.06 MiB (40960000 bytes)
+(no python stack)
+
+[4] 39.06 MiB (40960000 bytes)
+(no python stack)
+
+[5] 39.06 MiB (40960000 bytes)
+  cs336_basics/optimizer.py:74  step
+  optim/optimizer.py:493  wrapper
+  cs336-systems/benchmark.py:135  run_forward_backward
+  cs336-systems/benchmark.py:153  main
+  cs336-systems/benchmark.py:190  <module>
+
+[6] 39.06 MiB (40960000 bytes)
+  cs336_basics/optimizer.py:75  step
+  optim/optimizer.py:493  wrapper
+  cs336-systems/benchmark.py:135  run_forward_backward
+  cs336-systems/benchmark.py:153  main
+  cs336-systems/benchmark.py:190  <module>
+
+[7] 39.06 MiB (40960000 bytes)
+  cs336_basics/optimizer.py:71  step
+  optim/optimizer.py:493  wrapper
+  cs336-systems/benchmark.py:135  run_forward_backward
+  cs336-systems/benchmark.py:153  main
+  cs336-systems/benchmark.py:190  <module>
+
+[8] 39.06 MiB (40960000 bytes)
+  cs336_basics/optimizer.py:72  step
+  optim/optimizer.py:493  wrapper
+  cs336-systems/benchmark.py:135  run_forward_backward
+  cs336-systems/benchmark.py:153  main
+  cs336-systems/benchmark.py:190  <module>
+

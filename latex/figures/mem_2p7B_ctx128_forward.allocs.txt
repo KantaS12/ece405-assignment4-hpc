@@ -1,0 +1,92 @@
+# Top 8 live allocations at the global peak
+# snapshot=reports/memory/snap-2.7B-ctx128-forward-fp32-pystk-20260506-080032.pickle
+# peak=13084.1 MiB  total_live_at_peak=13084.1 MiB
+
+[1] 100.00 MiB (104857600 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+
+[2] 100.00 MiB (104857600 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+
+[3] 100.00 MiB (104857600 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+
+[4] 100.00 MiB (104857600 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+
+[5] 100.00 MiB (104857600 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+
+[6] 100.00 MiB (104857600 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+
+[7] 100.00 MiB (104857600 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+
+[8] 100.00 MiB (104857600 bytes)
+  modules/module.py:1329  convert
+  modules/module.py:930  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:903  _apply
+  modules/module.py:1343  to
+  cs336-systems/benchmark.py:107  main
+  cs336-systems/benchmark.py:190  <module>
+

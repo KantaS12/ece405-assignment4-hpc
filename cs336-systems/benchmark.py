@@ -88,6 +88,14 @@ def main() -> None:
     torch.manual_seed(args.seed)
     device = torch.device(args.device)
 
+    if args.memory_profile and device.type == "cuda":
+        torch.cuda.memory._record_memory_history(
+            enabled="all",
+            context="alloc",
+            stacks="python",
+            max_entries=1_000_000,
+        )
+
     model = BasicsTransformerLM(
         vocab_size=args.vocab_size,
         context_length=args.context_length,
@@ -146,9 +154,6 @@ def main() -> None:
     if device.type == "cuda":
         torch.cuda.synchronize()
         torch.cuda.reset_peak_memory_stats()
-
-    if args.memory_profile and device.type == "cuda":
-        torch.cuda.memory._record_memory_history(max_entries=1000000)
 
     times: List[float] = []
     if device.type == "cuda":

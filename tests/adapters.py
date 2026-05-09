@@ -81,4 +81,8 @@ def get_sharded_optimizer(params, optimizer_cls: Type[torch.optim.Optimizer], **
     Returns:
         Instance of sharded optimizer.
     """
-    raise NotImplementedError
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "cs336-systems"))
+    from sharded_optimizer import ShardedOptimizer  # noqa: E402
+    return ShardedOptimizer(params, optimizer_cls, **kwargs)

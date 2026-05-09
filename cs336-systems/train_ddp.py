@@ -19,6 +19,7 @@ from distributed_utils import (
     shard_batch,
 )
 from ddp import DDPBucketed, DDPIndividualParameters
+from sharded_optimizer import ShardedOptimizer
 
 
 def _flatten_grads(params):
@@ -87,11 +88,14 @@ def _worker(rank, world_size, args, out_path):
     torch.manual_seed(args.seed)
 
     raw_model = build_lm(args.size, args.vocab_size, args.context_length, args.rope_theta).to(device)
-    if args.variant in ("individual", "flat"):
+    if args.variant in ("individual", "flat", "sharded"):
         _broadcast_initial_weights(raw_model)
     model = _wrap_model(args.variant, raw_model, args.bucket_size_mb)
 
-    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
+    if args.variant == "sharded":
+        optimizer = ShardedOptimizer(model.parameters(), torch.optim.AdamW, lr=1e-4)
+    else:
+        optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
     loss_fn = nn.CrossEntropyLoss()
 
     bs = args.batch_size
@@ -116,7 +120,9 @@ def _worker(rank, world_size, args, out_path):
 
         if args.variant == "individual":
             comm_s = _comm_individual(raw_model, world_size)
-        elif args.variant == "flat":
+        elif args.variant in ("flat", "sharded"):
+            # 'sharded' all-reduces gradients exactly like 'flat' (one big call), then
+            # the ShardedOptimizer broadcasts updated params on .step().
             comm_s = _comm_flat(raw_model, world_size)
         else:
             comm_s = _wait_overlap_or_bucketed(model)
@@ -153,7 +159,7 @@ def _worker(rank, world_size, args, out_path):
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--variant", choices=["individual", "flat", "overlap", "bucketed"], required=True)
+    p.add_argument("--variant", choices=["individual", "flat", "overlap", "bucketed", "sharded"], required=True)
     p.add_argument("--world-size", type=int, default=2)
     p.add_argument("--backend", choices=["gloo", "nccl"], default="gloo")
     p.add_argument("--master-port", default="29513")

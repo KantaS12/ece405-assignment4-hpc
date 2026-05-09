@@ -149,14 +149,8 @@ venv.bak/
 # Local sbatch / sweep scripts
 scripts/
 
-# LaTeX writeup sources / build artifacts
-latex/*
-!latex/report.tex
-!latex/report.pdf
-!latex/figures/
-latex/*.aux
-latex/*.log
-latex/*.out
+# LaTeX writeup sources / build artifacts (local only)
+latex/
 
 # nsys profiling artifacts (large; sometimes contain machine-local paths)
 *.sqlite

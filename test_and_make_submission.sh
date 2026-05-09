@@ -16,6 +16,7 @@ zip -r "$output_file" \
     uv.lock \
     README.md \
     glossary.md \
+    report.pdf \
     test_results.xml \
     -x '*egg-info*' \
     -x '*mypy_cache*' \
@@ -35,8 +36,6 @@ zip -r "$output_file" \
     -x '*.pt' \
     -x '*.pth' \
     -x 'reports/nsys_profiles/*'
-
-zip -j "$output_file" latex/report.pdf
 
 echo "All files have been compressed into $output_file"
 ls -lh "$output_file"

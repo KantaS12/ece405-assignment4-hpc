@@ -33,8 +33,10 @@ def get_flashattention_autograd_function_triton() -> Type:
     Returns:
         A class object (not an instance of the class)
     """
-    # For example: return MyTritonFlashAttentionAutogradFunctionClass
-    raise NotImplementedError
+    import sys, pathlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "cs336-systems"))
+    from flash_attention import FlashAttentionTriton
+    return FlashAttentionTriton
 
 
 def _ddp_module():
